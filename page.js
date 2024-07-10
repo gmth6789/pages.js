@@ -1214,11 +1214,11 @@ pathToRegexp_1.tokensToRegExp = tokensToRegExp_1;
    */
 
   var globalPage = createPage();
-  var page_js = globalPage;
+  var pages_js = globalPage;
   var default_1 = globalPage;
 
-page_js.default = default_1;
+pages_js.default = default_1;
 
-return page_js;
+return pages_js;
 
 })));
