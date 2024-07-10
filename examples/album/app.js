@@ -26,7 +26,7 @@ function notfound() {
 function display(photos) {
   var el = document.querySelector('#photos');
   el.innerHTML = '';
-  photos.forEach(function(photo){
+  photos.forEach(function (photo) {
     var img = document.createElement('img');
     img.src = photo;
     el.appendChild(img);
@@ -45,7 +45,7 @@ function adjustPager(page) {
 }
 
 var images = [
-    'http://upload.wikimedia.org/wikipedia/en/7/76/Grim_Fandango_artwork.jpg'
+  'http://upload.wikimedia.org/wikipedia/en/7/76/Grim_Fandango_artwork.jpg'
   , 'http://www.xblafans.com/wp-content/uploads//2011/08/Grim-Fandango1.jpg'
   , 'http://media.giantbomb.com/uploads/0/1371/190604-grimfandango106_super.jpg'
   , 'http://gamejunkienz.files.wordpress.com/2012/02/grimfandango.jpg'

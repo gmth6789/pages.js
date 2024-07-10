@@ -34,7 +34,7 @@ function load(ctx, next) {
   }
 
   // pretend we're querying some database etc
-  setTimeout(function(){
+  setTimeout(function () {
     // you can assign properties to the context
     // for use between these functions. The .state
     // property is what's saved in history.

@@ -25,10 +25,10 @@ page();
 // everything below is not part of page.js
 // just callbacks etc..
 
-document.querySelector('#cycle').onclick = function(e){
+document.querySelector('#cycle').onclick = function (e) {
   var i = 0;
   var names = Object.keys(avatars);
-  setInterval(function(){
+  setInterval(function () {
     var name = names[i++ % names.length];
     page('/user/' + name);
   }, 1500);
@@ -40,11 +40,11 @@ function text(str) {
 
 function displayIndexAfter(ms) {
   var id;
-  return function(ctx, next){
+  return function (ctx, next) {
     id && clearTimeout(id);
 
     if ('/' != ctx.path) {
-      id = setTimeout(function(){
+      id = setTimeout(function () {
         page('/');
       }, ms);
     }

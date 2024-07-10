@@ -2,7 +2,7 @@
 $(function () {
   var navLinks = $('#navigation li');
 
-  $('#navigation a').on('click', function (e) {	
+  $('#navigation a').on('click', function (e) {
     changeActive(navLinks.index(this));
   });
 

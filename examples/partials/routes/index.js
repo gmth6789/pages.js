@@ -4,15 +4,15 @@
 
   var cache = {};
 
-  function get (url, cb) {
+  function get(url, cb) {
     if (cache[url]) return cb(cache[url]);
     $.ajax({
       url: url,
-      success: function(data) {
+      success: function (data) {
         cache[url] = data;
         cb(data);
       },
-      error: function(jqXHR, textStatus, errorThrown) {
+      error: function (jqXHR, textStatus, errorThrown) {
         console.log(jqXHR, textStatus, errorThrown);
       },
       dataType: 'text'
@@ -52,10 +52,10 @@
       });
     },
     test: function (ctx, next) {
-      window.location.href = 'http://localhost:4000/partials/test/';
+      window.location.href = 'https://pagesjs-q2rb--4000--70dbe416.local-credentialless.webcontainer.io/partials/test/';
     },
     examples: function (ctx, next) {
-      window.location.href = 'http://localhost:4000/';
+      window.location.href = 'https://pagesjs-q2rb--4000--70dbe416.local-credentialless.webcontainer.io/';
     }
   };
 

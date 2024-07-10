@@ -13,12 +13,12 @@ page.base('/transitions');
 
 // transition "middleware"
 
-page('*', function(ctx,  next){
+page('*', function (ctx, next) {
   if (ctx.init) {
     next();
   } else {
     content.classList.add('transition');
-    setTimeout(function(){
+    setTimeout(function () {
       content.classList.remove('transition');
       next();
     }, 300);
@@ -27,15 +27,15 @@ page('*', function(ctx,  next){
 
 // regular pages
 
-page('/', function(){
+page('/', function () {
   p.textContent = '';
 });
 
-page('/contact', function(){
+page('/contact', function () {
   p.textContent = 'contact page';
 });
 
-page('/about', function(){
+page('/about', function () {
   p.textContent = 'about page';
 });
 

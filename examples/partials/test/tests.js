@@ -12,14 +12,14 @@ window.addEventListener('load', function (e) {
 });
 
 describe('site', function () {
-  function expected (index, idx, header) {
+  function expected(index, idx, header) {
     expect(index).to.equal(idx);
     var h = site.contentDocument.querySelector('#content h1');
     expect(h.innerHTML).to.equal(header);
     var p = site.contentDocument.querySelector('#content p');
-    expect(p.innerHTML).to.equal('page '+index);
+    expect(p.innerHTML).to.equal('page ' + index);
   }
-  
+
   it('should load home page', function (done) {
     site.contentWindow.done = function (index) {
       expected(index, 0, 'Home');
