@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIFF App</title>
+  <style>
+    .badge { vertical-align: text-top; }
+  </style>
+</head>
+<body>
+  <div id="app" class="py-3" v-cloak>
+    <div class="container text-monospace">
+      <h1>เซิร์ฟเวอร์เริ่มต้นได้สำเร็จ</h1>
+      <hr>
+      <h2>Messaging API 設定</h2>
+      <ol>
+        <li class="mt-1">請把 <code class="mx-1">Webhook URL</code> 設定為 <span class="badge badge-dark" @click="btnCopy(webhook)">{{ webhook }}</span></li>
+        <li class="mt-1">請把 <span class="badge badge-primary" @click="btnCopy('LINEOA_ACCESS_TOKEN')">LINEOA_ACCESS_TOKEN</span> 設定為 <code class="mx-1">Channel access token (long-lived)</code></li>
+        <li class="mt-1">請把 <span class="badge badge-primary" @click="btnCopy('LINEOA_SECRET')">LINEOA_SECRET</span> 設定為 <code class="mx-1">Channel secret</code></li>
+      </ol>
+      <hr>
+      <h2>LIFF 設定</h2>
+      <ol>
+        <li class="mt-1">新增一個 Full 大小的 LIFF，<code>Endpoint URL</code> 設定為 <span class="badge badge-dark" @click="btnCopy(liffFull)">{{ liffFull }}</span>，然後把 <span class="badge badge-primary" @click="btnCopy('LIFFID_FULL')">LIFFID_FULL</span> 設定為剛剛新增的 LIFF ID</li>
+        <li class="mt-1">新增一個 Tall 大小的 LIFF，<code>Endpoint URL</code> 設定為 <span class="badge badge-dark" @click="btnCopy(liffTall)">{{ liffTall }}</span>，然後把 <span class="badge badge-primary" @click="btnCopy('LIFFID_TALL')">LIFFID_TALL</span> 設定為剛剛新增的 LIFF ID</li>
+        <li class="mt-1">新增一個 Compact 大小的 LIFF，<code>Endpoint URL</code> 設定為 <span class="badge badge-dark" @click="btnCopy(liffCompact)">{{ liffCompact }}</span>，然後把 <span class="badge badge-primary" @click="btnCopy('LIFFID_COMPACT')">LIFFID_COMPACT</span> 設定為剛剛新增的 LIFF ID</li>
+      </ol>
+    </div>
+  </div>
+  <script>
+    window.vm = new Vue({
+      el: '#app',
+      data: {
+        liffCompact: '',
+        liffFull: '',
+        liffTall: '',
+        webhook: '',
+      },
+      async mounted () {
+        this.liffCompact = new URL('/liff/compact/', location).href;
+        this.liffFull = new URL('/liff/full/', location).href;
+        this.liffTall = new URL('/liff/tall/', location).href;
+        this.webhook = new URL('/webhook', location).href;
+      },
+      methods: {
+        async btnCopy (text, container = null) {
+          if (!container) container = document.body;
+          const dom = document.createElement('textarea');
+          dom.value = text;
+          container.appendChild(dom);
+          dom.select();
+          dom.setSelectionRange(0, 1e6); // For mobile devices
+          document.execCommand('copy');
+          container.removeChild(dom);
+          await Swal.fire({ icon: 'success', title: '已複製到剪貼簿' });
+        },
+      },
+    });
+  </script>
+</body>
+</html>
